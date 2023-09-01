@@ -1,0 +1,14 @@
+import React from 'react';
+
+const WhatsAppLink = ({ phoneNumber, message }) => {
+  const encodedPhoneNumber = encodeURIComponent(phoneNumber);
+  const encodedMessage = encodeURIComponent(message);
+
+  const whatsappURL = `https://api.whatsapp.com/send?phone=${encodedPhoneNumber}&text=${encodedMessage}`;
+
+  return (
+    <a href={whatsappURL}>Envoyer un message WhatsApp</a>
+  );
+};
+
+export default WhatsAppLink;
