@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 import RelatedProducts from "../components/RelatedProducts";
 import { CartContext } from "../context/CartContext";
 import { supabase } from '../api/supabaseClient';
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 
 const ProductDetails = () => {
@@ -47,7 +48,7 @@ const ProductDetails = () => {
   // console.log(produits)
 
   if (!produits) {
-    return <div className="container mx-auto text-center">Chargement des données...</div>;
+    return <div className="container mx-auto text-center"><PropagateLoader color={"#f8a100"} /></div>;
   }else{
 
   const categorieId = produits[0].categories.id;

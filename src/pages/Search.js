@@ -58,14 +58,16 @@ return(
       <div className='gap-x-[30px]'>
         <CategoryNav />
         <main>
-          <div className='py-3 text-xl uppercase text-center lg:text-left'>{produits?.length > 0 ? `${produits.length} résultat pour la recherche de  ${searchTerm}` : `Aucune données ne correspond à ${searchTerm}`}</div>
+         {produits?.length > 0 ?  <div className='py-3 text-xl uppercase text-center lg:text-left'>`${produits.length} résultat pour la recherche de  ${searchTerm}`</div> :  <div className='py-3 text-xl uppercase text-center lg:text-left'>`Aucune données ne correspond à ${searchTerm}`</div>}
+         {produits?.length > 0 && 
           <div className=' grid  md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-[15px] md:gap-[30px] sm:grid-cols-1 '>
-            {produits?.map((product) => {
-              return (
-                <Product product={product} key={product.id}/>
-              );
-            })}
-          </div>
+              {produits?.map((product) => {
+                return (
+                  <Product product={product} key={product.id}/>
+                );
+              })}
+            </div>
+          }
         </main>
       </div>
     </div>

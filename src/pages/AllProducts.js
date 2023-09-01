@@ -47,7 +47,7 @@ const AllProducts = () => {
    // console.log(produits)
 
   if (error) {
-    return <div>Erreur: {error.message}</div>;
+    return <div className="container mx-auto text-center">Une erreur est survenue... Veillez réessayer plus tard ! </div>;
   }
 
   const ProductMemo = React.memo(Product);
