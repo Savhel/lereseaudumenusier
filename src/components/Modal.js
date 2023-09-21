@@ -43,9 +43,9 @@ const Modal = ({ visible, onClose, total }) => {
   //bot telegramme
 
   const sendMessage = async (text) => {
-   /*  const response1 = await axios.post(
+    const response1 = await axios.post(
        `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
-    ); */
+    ); 
     //.log(response.data);
     const response2 = await axios.post(
       //`https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
