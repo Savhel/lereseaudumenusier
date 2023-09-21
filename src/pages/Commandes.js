@@ -38,7 +38,7 @@ const Commandes = () => {
    };
  
  
-  console.log(produits)
+  // console.log(produits)
 
  if (!produits) {
    return <div className="justify-items-center justify-center text-center"> 

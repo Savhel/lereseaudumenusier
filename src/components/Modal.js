@@ -97,7 +97,7 @@ const Modal = ({ visible, onClose, total }) => {
               created_at: new Date(),
             },
           ])
-          .select();
+          .single();
         
         if (error) {
           console.log(error)

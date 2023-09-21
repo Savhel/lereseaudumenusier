@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { useLocation } from 'react-router-dom';
-import useFetch from '../hooks/useFetch';
 import CategoryNav from '../components/CategoryNav';
 import Product from '../components/Product';
 import { supabase } from '../api/supabaseClient';
@@ -22,7 +21,7 @@ const Search = () => {
  
  useEffect(() => {
    fetchCategories();
- }, []);
+ });
  
   async function fetchCategories () {
      try {
@@ -58,7 +57,7 @@ return(
       <div className='gap-x-[30px]'>
         <CategoryNav />
         <main>
-         {produits?.length > 0 ?  <div className='py-3 text-xl uppercase text-center lg:text-left'>{produits.length} résultat pour la recherche de  {searchTerm}</div> :  <div className='py-3 text-xl uppercase text-center lg:text-left'>Aucune données ne correspond à {searchTerm}</div>}
+         {produits?.length > 0 ?  <div className='py-3 text-xl uppercase text-center lg:text-left'>{produits.length} résultat(s) pour la recherche de  {searchTerm}</div> :  <div className='py-3 text-xl uppercase text-center lg:text-left'>Aucune données ne correspond à {searchTerm}</div>}
          {produits?.length > 0 && 
           <div className=' grid  md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-[15px] md:gap-[30px] sm:grid-cols-1 '>
               {produits?.map((product) => {

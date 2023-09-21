@@ -1,7 +1,5 @@
-import React, { Children } from "react";
-import * as api from './api';
+import React from "react";
 import {
-  createBrowser,
   RouterProvider,
   Outlet,
   createBrowserRouter,
@@ -17,6 +15,8 @@ import Commandes from "./pages/Commandes";
 //components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Admin from "./pages/Admin";
+import AddCategorie from "./pages/AddCategorie";
 
 //section
 
@@ -43,6 +43,10 @@ const router = createBrowserRouter([
       { path: "/search", element: <Search /> },
 
       { path: "/commande/:id", element: <Commandes /> },
+
+      { path: "/adminStore", element: <Admin /> },
+
+      { path: "/adminStores", element: <AddCategorie /> },
     ],
   },
 ]);

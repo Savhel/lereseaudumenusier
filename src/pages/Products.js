@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useFetch from '../hooks/useFetch';
 import CategoryNav from '../components/CategoryNav';
 import Product from '../components/Product';
 import { supabase } from '../api/supabaseClient';

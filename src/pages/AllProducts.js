@@ -56,7 +56,6 @@ const AllProducts = () => {
     <div className="mb-16 pt-40 lg:pt-0">
       <div className="container mx-auto">
         <div className="gap-x-[30px]">
-          <CategoryNav />
           <main>
             <div className="justify-items-center justify-center text-center">
               {isLoading && <PropagateLoader color={"#f8a100"} />}

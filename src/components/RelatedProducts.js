@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import useFetch from '../hooks/useFetch';
 import ProductSlider from './ProductSlider';
 import { supabase } from '../api/supabaseClient';
 
