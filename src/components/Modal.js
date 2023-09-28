@@ -1,67 +1,45 @@
 import {
   IoArrowBack,
   IoArrowForward,
-  IoCartOutline,
   IoClose,
 } from "react-icons/io5";
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 
-import * as api from "../api";
 import axios from "axios";
-import { request } from '../request';
 import { supabase } from '../api/supabaseClient';
-import valider from './valider';
 
 
 const Modal = ({ visible, onClose, total }) => {
 
-  const { cart, isLoad, setIsLoad, setCartT } = useContext(CartContext);
+  const { cart, setCartT } = useContext(CartContext);
   const [get, setGet] = useState(0);
-  const [lid, setId] = useState(null);
   const [adr, setAdr] = useState('');
   const [tel, setTel] = useState('');
   const [info, setInfo] = useState({});
   const [payement, setPayement] = useState('');
 
-   const [popupStyle, showPopup] = useState("hidden");
-
   const [code, setCode] = useState('');
-
-  const [isopen, setIsopen] = useState(false);
-
-  const handleOnclose = () => setIsopen(false);
    
    
   useEffect(() => {
 
     setInfo({ ...info, email: "Client@gmail.com",nom: "Client",prenom: "Client" });
-  }, []);
+  }, [info]);
 
 
   
   //bot telegramme
 
   const sendMessage = async (text) => {
-    const response1 = await axios.post(
-       `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
-    ); 
-    //.log(response.data);
-    const response2 = await axios.post(
-      //`https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
+   //  await axios.post(
+   //    `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
+   // ); 
+    await axios.post(
       `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=2097213446&text=${text}`
     );
     //.log(response.data);
   };
-  
-  const fetchData = async () => {
-          const result = await api.lireCommandes();
-
-          console.log(result.data.data);
-          setId(result.data.data[result.data.data.length - 1].id);
-          console.log(lid);
-          handlePayement(result.data.data[result.data.data.length - 1].id);
-        };
   
   const handlePayement = async () => {
 
@@ -75,12 +53,21 @@ const Modal = ({ visible, onClose, total }) => {
     
     
         
-    //console.log(lid);
+    //
     
     if (tel && adr && get > 0) {
     
       
-     
+     console.log({ panier: cart,
+      nom: info.nom,
+      prenom: info.prenom,
+      telephone: tel,
+      adresse: adr,
+      payement: payement,
+      code: code,
+      total: total,
+      created_at: new Date(),
+    });
     
       try {
         const { data, error } = await supabase
@@ -97,13 +84,10 @@ const Modal = ({ visible, onClose, total }) => {
               created_at: new Date(),
             },
           ])
-          .single();
+          .select();
         
-        if (error) {
-          console.log(error)
-        }
 
-          console.log(data);
+          console.log(data[0].id);
         
           const txt = `Salut Narcisse , un client a passé une nouvelle commande regarde son le contenu ici : https://lereseautechnique.vercel.app/commande/${
             data[0].id
@@ -142,9 +126,6 @@ const Modal = ({ visible, onClose, total }) => {
     setPayement( e.target.value);
     
   };
-  const test = async() => {
-    alert (info.telephone);
-  }
   //const value = Payements();
 
   if (!visible) return null;

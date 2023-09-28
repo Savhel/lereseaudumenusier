@@ -11,11 +11,11 @@ const Commandes = () => {
  const { id } = useParams();
  const [produits, setProduits] = useState(null);
  
- //console.log(id)
+ console.log(id)
   useEffect(() => {
-  
+  fetchCategories();
 
- },[fetchCategories]);
+ },[]);
  
   async function fetchCategories () {
      try {

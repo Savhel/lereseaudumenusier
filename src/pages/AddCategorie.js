@@ -22,7 +22,7 @@ function AddCategorie() {
               nom: nom,
             },
           ])
-          .single();
+          .select();
 
           alert(`La catégorie  a bien été ajoutée `);
 

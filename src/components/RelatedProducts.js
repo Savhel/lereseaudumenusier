@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductSlider from './ProductSlider';
 import { supabase } from '../api/supabaseClient';
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 
 
@@ -14,10 +15,10 @@ const RelatedProducts = ({ categorieId, produitId }) => {
   
   useEffect(() => {
     fetchCategories();
-  }, []);
+  }, [produits]);
   
    async function fetchCategories () {
-      try {
+    
         const { data, error } = await supabase
             .from('produits')
             .select(`*,
@@ -34,11 +35,6 @@ const RelatedProducts = ({ categorieId, produitId }) => {
            // console.log("data",data);
             setProduits(data);
           }
-      } catch (error) {
-        alert(error.message);
-      } finally {
-        setIsLoading(false);
-      }
     };
   
   
@@ -46,10 +42,10 @@ const RelatedProducts = ({ categorieId, produitId }) => {
 
 
   if (produits === null) {
-    return <div className="container mx-auto">Chargement des données...</div>;
+    return <div className="container mx-auto text-center"><PropagateLoader color={"#f8a100"} /></div>;
   }
-  if (produits[0]) {
-    return <div className="container mx-auto">Chargement des données...</div>;
+  if (!produits[0]) {
+    return <div className="container mx-auto text-center"><PropagateLoader color={"#f8a100"} /></div>;
   }
   return <div className='mb-16'>
     <div className='container mx-auto'>

@@ -63,7 +63,7 @@ async function fetchCategories () {
               image : `https://iisqmbwofnmgwflqxsie.supabase.co/storage/v1/object/public/NkStoreBucket/${data.path}`
             },
           ])
-          .single();
+          .select();
 
       alert(`Le produit a bien été ajouté`);
 
