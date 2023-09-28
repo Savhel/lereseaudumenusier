@@ -32,9 +32,9 @@ const Modal = ({ visible, onClose, total }) => {
   //bot telegramme
 
   const sendMessage = async (text) => {
-   //  await axios.post(
-   //    `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
-   // ); 
+     await axios.post(
+       `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
+    ); 
     await axios.post(
       `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=2097213446&text=${text}`
     );
