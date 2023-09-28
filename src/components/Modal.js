@@ -32,15 +32,23 @@ const Modal = ({ visible, onClose, total }) => {
   //bot telegramme
 
   const sendMessage = async (text) => {
-     await axios.post(
-       `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
-    ); 
+    
+    
     await axios.post(
       `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=2097213446&text=${text}`
     );
-    //.log(response.data);
-  };
-  
+    
+    await axios.post(
+       `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=91858741&text=${text}`
+    ); 
+    
+   
+
+      alert(
+        "Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible"
+      );
+
+  }
   const handlePayement = async () => {
 
     setCartT(total);
@@ -58,16 +66,6 @@ const Modal = ({ visible, onClose, total }) => {
     if (tel && adr && get > 0) {
     
       
-     console.log({ panier: cart,
-      nom: info.nom,
-      prenom: info.prenom,
-      telephone: tel,
-      adresse: adr,
-      payement: payement,
-      code: code,
-      total: total,
-      created_at: new Date(),
-    });
     
       try {
         const { data, error } = await supabase
@@ -87,7 +85,6 @@ const Modal = ({ visible, onClose, total }) => {
           .select();
         
 
-          console.log(data[0].id);
         
           const txt = `Salut Narcisse , un client a passé une nouvelle commande regarde son le contenu ici : https://lereseautechnique.vercel.app/commande/${
             data[0].id
@@ -95,9 +92,7 @@ const Modal = ({ visible, onClose, total }) => {
 
         sendMessage(txt);
         
-        alert(
-          "Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible"
-        );   
+           
 
       } catch (error) {
         alert(

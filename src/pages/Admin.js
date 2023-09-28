@@ -70,8 +70,7 @@ async function fetchCategories () {
 
       // console.log(data.publicURL)
     }else if (error) {
-      alert("une erreur est survenue lors de l'insertion du produit. Vous avez un problème de connexion, veuillez réessayer s'il vous plait !");
-
+      alert("une erreur est survenue lors de l'insertion du produit. Vous avez  un problème de connexion, veuillez réessayer s'il vous plait !");
     }
 
     // Réinitialiser les champs du formulaire après l'envoi
