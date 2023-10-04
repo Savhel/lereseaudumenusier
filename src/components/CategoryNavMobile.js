@@ -47,7 +47,7 @@ useEffect(() => {
           onClick={() => setMenu(false)}
           className='cursor-pointer text-3xl' />
       </div>
-      <div className='flex flex-col gap-y-8'>
+      <div className='flex flex-col gap-y-8 overflow-y-auto h-[70vh]'>
         {categories?.map((categorie) => {
           return <Link to={`products/${categorie.id}`} onClick={() => setMenu(false)} className='uppercase font-medium ' key={categorie.id}>{categorie.nom}</Link>
         })}
